@@ -9,10 +9,13 @@
 			.tableListagem * {
 				border: 1px solid blue;
 			}
+			.tableListagem thead {
+				height: 40px;
+			}
 		</style>
 	</head>
 	<body>
-		Exemplo Listagem
+		Exemplo Listagem 1
 
 		<!-- AREA DA TABELA -->
 		<div class="divListagemContainer">
@@ -34,7 +37,33 @@
 		<script type="text/html" id="modelo" pk="cod">
 			<tr id="${cod}">
 				<td class="sort-cod">${cod}</td>
-				<td class="sort-staAtivo">${nome}</td>
+				<td class="sort-nome">${nome}</td>
+			</tr>
+		</script>
+
+		<br /><br /><br /><br /><br />
+		Exemplo Listagem 2
+
+		<!-- AREA DA TABELA -->
+		<div class="divListagemContainer2">
+			<div class="boxTable">
+				<table class="tableListagem">
+					<thead>
+						<tr>
+							<th class="sort-cod">cod</th>
+							<th class="sort-nome">nome</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- AREA DO MOLDE -->
+		<script type="text/html" id="modelo2" pk="cod">
+			<tr id="${cod}">
+				<td class="sort-cod">${cod}</td>
+				<td class="sort-nome">${nome}</td>
 			</tr>
 		</script>
 
@@ -42,7 +71,18 @@
 		<script type="text/javascript" src="/lib/mk.js"></script>
 
 		<script type="text/javascript">
+			// Exemplo de iniciar a lista
 			let lista = [new mk("/getList.json")];
+
+			// Exemplo 2
+			let listas2 = [];
+			let dados = [
+				{ cod: 99999, nome: "Dados" },
+				{ cod: 99989, nome: "Direto" },
+			];
+			listas2.push(
+				new mk(dados, ".divListagemContainer2", "#modelo2", ".iConsultas")
+			);
 		</script>
 	</body>
 </html>
