@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/lib/mk.css" />
+		<title>Exemplo</title>
+		<style>
+			.tableListagem * {
+				border: 1px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+		Exemplo Listagem
+
+		<!-- AREA DA TABELA -->
+		<div class="divListagemContainer">
+			<div class="boxTable">
+				<table class="tableListagem">
+					<thead>
+						<tr>
+							<th class="sort-cod">cod</th>
+							<th class="sort-nome">nome</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			<!--@await Html.PartialAsync("_tableResumo")-->
+		</div>
+
+		<!-- AREA DO MOLDE -->
+		<script type="text/html" id="modelo" pk="cod">
+			<tr id="${cod}">
+				<td class="sort-cod">${cod}</td>
+				<td class="sort-staAtivo">${nome}</td>
+			</tr>
+		</script>
+
+		<script type="text/javascript" src="/lib/popperv2.js"></script>
+		<script type="text/javascript" src="/lib/mk.js"></script>
+
+		<script type="text/javascript">
+			let lista = [new mk("/getList.json")];
+		</script>
+	</body>
+</html>
